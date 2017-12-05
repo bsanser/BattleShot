@@ -19,10 +19,16 @@ function Game() {
 	this.boardSize = 10;
 	this.totalShips = 10;	
 	this.shipsSunk;
-	this.ships = [new Carrier(5), new Cannon(3),new Cannon(3),new Frigate(2), new Frigate(2),new Frigate(2), new SailBoat(1), new SailBoat(1), 
-				  new SailBoat(1),new SailBoat(1)];
+	this.ships = [new Carrier()];
+
+	this.ships.forEach(function(ship) {
+	  	this.generateShips(ship);
+		}.bind(this)
+	);
 };
 
+	// this.ships = [new Carrier(), new Cannon(),new Cannon(),new Frigate(), new Frigate(),new Frigate(), new SailBoat(), new SailBoat(), 
+				  // new SailBoat(),new SailBoat()];
 
 
 
@@ -38,10 +44,16 @@ Game.prototype = {
 			if (index !== -1) {
 				ship.hits[index] = "hit";
 				document.getElementById(guess).classList.add("hit");
+				if (ship.hits.length == ship.length){
+					//pintar el barco en las 4 posiciones
+					//disminuir el número de barcos disponibles
+					this.shipsSunk++;
+				}
 				return true;
 			}
 
 			else {
+				console.log(guess);
 				document.getElementById(guess).classList.add("miss");
 				return false;
 			}
@@ -49,50 +61,45 @@ Game.prototype = {
 		}
 	},
 
- 	validPosition: function (row, col, ship) {
- 		for(var i = row; i < ship.length; i++) {
- 			if(grid[i][col] !== null) {
- 				return false;
+ 	generateShips: function(ship) {
+		 	var row = Math.floor(Math.random() * (this.boardSize - ship.length - 1));
+		 	var col = Math.floor(Math.random() * (this.boardSize - 1));
+		 	var isVertical = Math.random() > 0.5;
+		 	if (this.validPosition(row, col, isVertical, ship)) {
+		 		if (isVertical) {
+		 			for (var i = row; i < row + ship.length; i++) {
+			 			grid[i][col] = "x";
+			 			ship.locations.push([i, col]);
+	 				}
+		 		} else {
+		 			for (var i = col; i < col + ship.length; i++) {
+			 			grid[row][i] = "x";
+			 			ship.locations.push([row, i]);
+	 				}
+		 		}
+		 		
+		 	} else {
+ 				this.generateShips(ship);
+	 		}
+	},
+
+	validPosition: function (row, col, isVertical, ship) {
+		if (isVertical) {
+			for (var i = row; i < ship.length; i++) {
+	 			if (grid[i][col] !== null) {
+	 				return false;
+	 			}
  			}
- 			return true;
- 		}
-
-
-
- 	},
-
-
-
- 	generateShips: function(ship){
-		 	var row = Math.floor((Math.random() * (game.boardSize - ship.length)));
-		 	var col = Math.floor((Math.random() * game.boardSize));
-		 	if (!game.validPosition(row, col, ship)) {
-		 		game.generateShips(ship);
-		 	}
-		 	else {
-		 		for(var i = row; i < ship.length; i++) {
-		 			grid[i][col] = "x";
-		 			ship.locations.push([i][col]);
+		} else {
+			for (var i = col; i < ship.length; i++) {
+	 			if (grid[row][i] !== null) {
+	 				return false;
+	 			}
  			}
-		 
-	 }
-
-	  // place ship horizontally (get a row and a column)
-
-		 // else {
-		 // 	var row = Math.floor((Math.random() * game.boardSize));
-		 // 	var col = Math.floor((Math.random() * (game.boardSize - ship.length)));
-		 //
-		
-		 // 		for (i = 0; i < ship.length; i++) {
-		 // 			ship.locations.push([row, col++]);
-		 // 			grid[row][col] = "x";
-		 // 		}
-
-		 // }
-
-	
-	}
+		}
+ 		
+ 		return true;
+ 	}
 
 //la primera vez coloco el barco y lo pinto. En la segunda iteración., antes de pintar el barco en el grid hay que comprobar que sus posiciones estén
 // vacias. Si no, genero otro.
