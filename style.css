@@ -1,7 +1,115 @@
 h1 {
   text-align: center;
 }
-canvas {
-  border: 2px solid black;
-  
+
+#board {
+	outline:2px solid #000;
+	font-size: 0;
+	height:600px;
+	width:600px;
+	padding: 0;
+}
+
+.cell {
+	margin:0;
+	padding:0;
+	outline:1px solid #000;
+	display:inline-block;
+	width:60px;
+    height:60px;
+}
+#container {
+	display: flex;
+	justify-content: space-around;
+}
+#hidden_ships {
+	border: 2px dotted black;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px;
+}
+
+#hidden_ships p {
+	margin-right: 26px;
+}
+
+#carrier-img{
+	width:20vw;
+}
+
+#cannon-img{
+	width:15vw;
+}
+
+#frigate-img{
+	width:10vw;
+}
+
+
+
+
+#sail_boat-img{
+	width:5vw;
+}
+
+.carrier {
+  display:flex;
+  align-items: center;
+}
+
+.cannon {
+  display:flex;
+  align-items: center;
+}
+
+.frigate{
+  display:flex;
+  align-items: center;
+}
+
+.sail_boat {
+  display:flex;
+  align-items: center;
+}
+
+.hidden .bar {
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.square {
+  width: 22px;
+}
+
+
+
+a {
+	margin-top: 5vh;
+	margin-left: 20vw;
+}
+
+
+
+.sunk{
+	
+}
+
+
+
+.miss{
+	background-image: url("images/miss.png");
+	background-size: 45px 45px;
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+
+.hit {
+	background-image: url("images/hit.png");
+	background-size: 45px 45px;
+	background-repeat: no-repeat;
+	background-position: center;
+
 }

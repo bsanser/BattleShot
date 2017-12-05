@@ -1,17 +1,77 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <title>BattleShot</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+  <title>BattleShot</title>
+</head>
+
+<body>
   <h1>Welcome to BattleShot</h1>
-  <canvas id="canvasId" width="400" height="400"></canvas>
+
+  <div id="container">
+    <div id="board"></div>
+
+    <div id="hidden_ships">
+      <h2>Hidden ships</h2>
+      <div class="carrier">
+        <img id="carrier-img" src="images/carrier.png">
+        <p>(1)</p>
+        <div class="bar">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+        </div>
+      </div>
+
+      <div class="cannon">
+        <img id="cannon-img" src="images/cannon_boat.png">
+        <p>(2)</p>
+        <div class="bar">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+        </div>
+      </div>
+
+      <div class="frigate">
+        <img id="frigate-img" src="images/frigate.png">
+        <p>(3)</p>
+        <div class="bar">
+          <img class="square" src="images/square.png">
+          <img class="square" src="images/square.png">
+        </div>
+      </div>
+
+      <div class="sail_boat">
+        <img id="sail_boat-img" src="images/sail_boat.png">
+        <p>(4)</p>
+        <div class="bar">
+          <img class="square" src="images/square.png">
+        </div>
+      </div>
 
 
-  <script type="text/javascript" src="main.js"></script>
+
+    </div>
+
+  </div>
+
+  <a class="waves-effect waves-light btn-large"> Place the ships!</a>
+
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
   <script type="text/javascript" src="cell.js"></script>
+   <script type="text/javascript" src="ships.js"></script>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</body>
 
-  </body>
 </html>
