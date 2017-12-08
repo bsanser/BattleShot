@@ -1,7 +1,7 @@
 
 function Ship(length) {
 	this.length = length;
-	this.hits = length;
+	this.hits = 0;
 	this.locations =[];
 }
 
@@ -29,13 +29,3 @@ function SailBoat () {
 }
 
 SailBoat.prototype = Object.create(Ship.prototype);
-
-
-
-					
-					
-
-
-
-
-

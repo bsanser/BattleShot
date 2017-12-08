@@ -17,18 +17,23 @@ var grid = [
 
 function Game() {
 	this.boardSize = 10;
-	this.totalShips = 10;	
+	this.totalShips = 10;
 	this.shipsSunk;
-	this.ships = [new Carrier()];
-
+	this.ships = [new Carrier(), new Cannon(),new Cannon(),new Frigate(), new Frigate(),new Frigate(), new SailBoat(), new SailBoat(),
+				  new SailBoat(),new SailBoat()];
 	this.ships.forEach(function(ship) {
 	  	this.generateShips(ship);
-		}.bind(this)
+		}.bind(this) 
 	);
-};
+}
 
-	// this.ships = [new Carrier(), new Cannon(),new Cannon(),new Frigate(), new Frigate(),new Frigate(), new SailBoat(), new SailBoat(), 
-				  // new SailBoat(),new SailBoat()];
+function findPosition() {
+	for (var i = 0; i < ship.locations.length; i++) {
+			for (var j = 0; j < 2; j++) {
+
+			}
+	}
+}
 
 
 
@@ -38,28 +43,35 @@ Game.prototype = {
 
 	fire: function(guess){
 
-		for (var i = 0; i < this.totalShips; i++) {
-			var ship = this.ships[i];
-			var index =  ship.locations.indexOf(guess);
-			if (index !== -1) {
-				ship.hits[index] = "hit";
-				document.getElementById(guess).classList.add("hit");
-				if (ship.hits.length == ship.length){
-					//pintar el barco en las 4 posiciones
-					//disminuir el número de barcos disponibles
-					this.shipsSunk++;
-				}
-				return true;
-			}
-
-			else {
-				console.log(guess);
-				document.getElementById(guess).classList.add("miss");
-				return false;
-			}
-
+	for (var i = 0; i < this.totalShips; i++) {
+		var ship = this.ships[i];
+		var convert2string = guess.toString();
+		if (convert2string.length === 1) {
+  		var convert2string = "0" + convert2string;
 		}
-	},
+		var splitGuess = convert2string.split("");
+
+		if (grid[splitGuess[0]][splitGuess[1]] !== null) {
+			ship.hits++;
+			document.getElementById(guess).classList.add("hit");
+			if (ship.hits == ship.length){
+				alert("Your ship was sunk!");
+				//pintar el barco en las 4 posiciones
+
+				//disminuir el número de barcos disponibles
+				// this.shipsSunk++;
+			}
+
+			return true;
+		}
+
+		else {
+			document.getElementById(guess).classList.add("miss");
+			return false;
+		}
+
+	}
+},
 
  	generateShips: function(ship) {
 		 	var row = Math.floor(Math.random() * (this.boardSize - ship.length - 1));
@@ -72,12 +84,12 @@ Game.prototype = {
 			 			ship.locations.push([i, col]);
 	 				}
 		 		} else {
-		 			for (var i = col; i < col + ship.length; i++) {
-			 			grid[row][i] = "x";
-			 			ship.locations.push([row, i]);
+		 			for (var j = col; j < col + ship.length; j++) {
+			 			grid[row][j] = "x";
+			 			ship.locations.push([row, j]);
 	 				}
 		 		}
-		 		
+
 		 	} else {
  				this.generateShips(ship);
 	 		}
@@ -97,19 +109,24 @@ Game.prototype = {
 	 			}
  			}
 		}
- 		
+
  		return true;
- 	}
-
-//la primera vez coloco el barco y lo pinto. En la segunda iteración., antes de pintar el barco en el grid hay que comprobar que sus posiciones estén
-// vacias. Si no, genero otro.
-		 	
+ 	},
 
 
 
 
- 	
-	
+	};
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -142,11 +159,11 @@ Game.prototype = {
 	// }
 	// }
 
-	
 
 
-	
-};
+
+
+
 
 
 // check location

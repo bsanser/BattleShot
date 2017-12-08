@@ -54,25 +54,15 @@ h1 {
 	width:5vw;
 }
 
-.carrier {
+.carrier,
+.cannon,
+.frigate,
+.sail_boat{
   display:flex;
   align-items: center;
 }
 
-.cannon {
-  display:flex;
-  align-items: center;
-}
 
-.frigate{
-  display:flex;
-  align-items: center;
-}
-
-.sail_boat {
-  display:flex;
-  align-items: center;
-}
 
 .hidden .bar {
 	justify-content: space-between;
@@ -91,9 +81,9 @@ a {
 }
 
 
+.panel {
+background: url('images/frigate.png');
 
-.sunk{
-	
 }
 
 
