@@ -16,12 +16,20 @@ h1 {
 	outline:1px solid #000;
 	display:inline-block;
 	width:60px;
-    height:60px;
+  height:60px;
+  cursor:pointer;
+
 }
+.forbidden {
+  cursor: no-drop;
+}
+
+
 #container {
 	display: flex;
 	justify-content: space-around;
 }
+
 #hidden_ships {
 	border: 2px dotted black;
 	display: flex;
@@ -35,22 +43,22 @@ h1 {
 	margin-right: 26px;
 }
 
-#carrier-img{
+#carrier_img{
 	width:20vw;
 }
 
-#cannon-img{
+#cannon_img{
 	width:15vw;
 }
 
-#frigate-img{
+#frigate_img{
 	width:10vw;
 }
 
 
 
 
-#sail_boat-img{
+#sailBoat_img{
 	width:5vw;
 }
 
@@ -81,9 +89,35 @@ a {
 }
 
 
-.panel {
-background: url('images/frigate.png');
 
+
+.carrier_ship {
+  background-image: url("images/carrier.png");
+  background-size: 45px 45px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.cannon_ship {
+    background-image: url("images/cannon_boat.png");
+    background-size: 45px 45px;
+  	background-repeat: no-repeat;
+  	background-position: center;
+
+}
+
+.frigate_ship {
+  background-image: url("images/frigate.png");
+  background-size: 45px 45px;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.sailBoat_ship {
+  background-image: url("images/sailBoat.png");
+  background-size: 45px 45px;
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 
@@ -93,6 +127,7 @@ background: url('images/frigate.png');
 	background-size: 45px 45px;
 	background-repeat: no-repeat;
 	background-position: center;
+  pointer-events: none;
 
 }
 
@@ -101,5 +136,6 @@ background: url('images/frigate.png');
 	background-size: 45px 45px;
 	background-repeat: no-repeat;
 	background-position: center;
+  pointer-events: none;
 
 }
