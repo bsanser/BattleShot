@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link rel="stylesheet" href="style.css">
   <title>BattleShot</title>
@@ -11,73 +12,133 @@
 <body>
   <h1>Welcome to BattleShot</h1>
 
-  <div id="container">
-    <div id="board"></div>
 
-    <div class="ships_sunk">
-      <p> Ships Sunk: <strong>0</strong> </p>
+  <div id="main-container">
+
+    <div class="grid-container">
+      <div class="numbers">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+        <p>6</p>
+        <p>7</p>
+        <p>8</p>
+        <p>9</p>
+        <p>10</p>
+      </div>
+      <div class="board_letters">
+        <div class="letters">
+          <p>A</p>
+          <p>B</p>
+          <p>C</p>
+          <p>D</p>
+          <p>E</p>
+          <p>F</p>
+          <p>G</p>
+          <p>H</p>
+          <p>I</p>
+          <p>J</p>
+        </div>
+
+        <div id="board">
+        </div>
+
+      </div>
     </div>
+    <div class="dashboard">
 
-    <div class="attempts">
-      <p>Attempts: <strong> 0 </strong> </p>
-    </div>
+      <div id="hidden_ships">
 
-    <div id="hidden_ships">
-      <h2>Hidden ships</h2>
-      <div class="carrier">
-        <img id="carrier_img" src="images/carrier.png">
-        <p>(<span id="carrier_num"> 1 </span>)</p>
-        <div class="bar">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
+        <h2>Hidden ships</h2>
+
+        <p> <b> Quick instructions: </b> To begin the game just click on  the "Place the ships" button and start guessing
+          the ship locations by clicking on each cell on the grid. </p>
+
+        <div class="carrier">
+          <p>(<strong id="carrier_num"> 1 </strong>)</p>
+          <div class="ship-length">
+            <img id="carrier_img" src="images/carrier.png">
+            <div class="square">
+              <img src="images/square.png">
+              <img src="images/square.png">
+              <img src="images/square.png">
+              <img src="images/square.png">
+              <img src="images/square.png">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="cannon">
+          <p>(<strong id="cannon_num"> 2 </strong>)</p>
+          <div class="ship-length">
+            <img id="cannon_img" src="images/cannon_boat.png">
+            <div class="square">
+              <img src="images/square.png">
+              <img src="images/square.png">
+              <img src="images/square.png">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="frigate">
+          <p>(<strong id="frigate_num"> 3 </strong>)</p>
+          <div class="ship-length">
+            <img id="frigate_img" src="images/frigate.png">
+            <div class="square">
+              <img src="images/square.png">
+              <img src="images/square.png">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="sail_boat">
+          <p>(<strong id="sailBoat_num"> 4 </strong>)</p>
+          <div class="ship-length">
+            <img id="sailBoat_img" src="images/sailBoat.png">
+            <div class="square">
+              <img src="images/square.png">
+            </div>
+          </div>
+
+        </div>
+        </div>
+
+        <hr>
+
+        <div class="buttons">
+          <a class="waves-effect waves-light btn-large" id="place_ships"><i class="small material-icons right">directions_boat</i>Place the ships!</a>
+          <a class="waves-effect waves-light btn-large" id="end_game"><i class="small material-icons right">visibility</i>End Game!</a>
+      </div>
+      <div id="info">
+        <div id="ships_sunk">
+          <p> Ships Sunk: <strong>0</strong> </p>
+        </div>
+
+        <div id="remaining_ships">
+          <p>Remaining ships: <strong> 10 </strong> </p>
+
+        </div>
+
+        <div id="attempts">
+          <p>Attempts: <strong> 0 </strong> </p>
         </div>
       </div>
-
-      <div class="cannon">
-        <img id="cannon_img" src="images/cannon_boat.png">
-        <p>(<span id="cannon_num"> 2 </span>)</p>
-        <div class="bar">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-        </div>
-      </div>
-
-      <div class="frigate">
-        <img id="frigate_img" src="images/frigate.png">
-        <p>(<span id="frigate_num"> 3 </span>)</p>
-        <div class="bar">
-          <img class="square" src="images/square.png">
-          <img class="square" src="images/square.png">
-        </div>
-      </div>
-
-      <div class="sail_boat">
-        <img id="sailBoat_img" src="images/sailBoat.png">
-        <p>(<span id="sailBoat_num"> 4 </span>)</p>
-        <div class="bar">
-          <img class="square" src="images/square.png">
-        </div>
-      </div>
-
-
 
     </div>
 
   </div>
 
-  <a class="waves-effect waves-light btn-large">Place the ships!</a>
 
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="cell.js"></script>
-   <script type="text/javascript" src="ships.js"></script>
+  <script type="text/javascript" src="ships.js"></script>
   <script type="text/javascript" src="game.js"></script>
   <script type="text/javascript" src="main.js"></script>
 </body>

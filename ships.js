@@ -1,9 +1,8 @@
 
-function Ship(length, name, number, image) {
+function Ship(length, name, image) {
 	this.length = length;
 	this.name = name;
 	this.hits = 0;
-	this.number = number;
 	this.image = image;
 	this.locations =[];
 }
@@ -13,25 +12,25 @@ function Ship(length, name, number, image) {
 
 
 function Carrier () {
-  Ship.call(this,5, "carrier", 1, "images/carrier.png");
+  Ship.call(this,5, "carrier", "images/carrier.png");
 }
 
 Carrier.prototype = Object.create(Ship.prototype);
 
 function Cannon () {
-  Ship.call(this,3, "cannon", 2, "images/cannon_boat.png");
+  Ship.call(this,3, "cannon","images/cannon_boat.png");
 }
 
 Cannon.prototype = Object.create(Ship.prototype);
 
 function Frigate () {
-  Ship.call(this,2, "frigate", 3, "images/frigate.png");
+  Ship.call(this,2, "frigate", "images/frigate.png");
 }
 
 Frigate.prototype = Object.create(Ship.prototype);
 
 function SailBoat () {
-  Ship.call(this,1, "sailBoat", 4, "images/sailBoat.png");
+  Ship.call(this,1, "sailBoat","images/sailBoat.png");
 }
 
 SailBoat.prototype = Object.create(Ship.prototype);
