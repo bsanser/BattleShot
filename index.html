@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
   <link rel="stylesheet" href="style.css">
@@ -10,7 +11,14 @@
 </head>
 
 <body>
-  <h1>Welcome to BattleShot</h1>
+
+  <div class="header">
+       <img class="logo" alt="game-logo" src="images/anchor.png">
+      <img class="welcome" alt="game-name" src="images/welcome.png">
+      <p> <b> Quick instructions: </b> To begin the game just click on  the <span class="err"> "Place the ships"</span> button and start guessing
+        the ship locations by clicking on each cell on the grid. </p>
+  </div>
+
 
 
   <div id="main-container">
@@ -53,8 +61,7 @@
 
         <h2>Hidden ships</h2>
 
-        <p> <b> Quick instructions: </b> To begin the game just click on  the "Place the ships" button and start guessing
-          the ship locations by clicking on each cell on the grid. </p>
+
 
         <div class="carrier">
           <p>(<strong id="carrier_num"> 1 </strong>)</p>

@@ -21,7 +21,7 @@ function Game() {
   this.carrierNum = 1;
   this.cannonNum = 2;
   this.frigateNum = 3;
-  this.sailBoatNum =4;
+  this.sailBoatNum = 4;
   this.shipsSunk = 0;
   this.remainingShips = 10;
   this.attempts = 0;
@@ -88,10 +88,52 @@ Game.prototype = {
       ship.hits++;
       document.getElementById(guess).classList.add('forbidden', 'hit');
       if (ship.hits === ship.length) {
+        for (var j = 0; j < ship.length; j++) {
+          document.getElementById(ship.locations[j]).classList.add(ship.name + '_ship');
+          document.getElementById(ship.locations[j]).classList.remove('hit');
+        }
+        switch (ship.name) {
+          case "carrier":
+            this.carrierNum--;
+            document.getElementById("carrier_num").textContent = this.carrierNum;
+            if (this.carrierNum === 0) {
+              document.getElementById("carrier_img").classList.add('sunk');
+            }
 
+            break;
+          case "cannon":
+            this.cannonNum--;
+            document.getElementById("cannon_num").textContent = this.cannonNum;
+            if (this.cannonNum === 0) {
+              document.getElementById("cannon_img").classList.add('sunk');
+            }
+
+            break;
+          case "frigate":
+
+            this.frigateNum--;
+            document.getElementById("frigate_num").textContent = this.frigateNum;
+            if (this.frigateNum === 0) {
+              document.getElementById("frigate_img").classList.add('sunk');
+            }
+
+            break;
+          case "sailBoat":
+
+            this.sailBoatNum--;
+            document.getElementById("sailBoat_num").textContent = this.sailBoatNum;
+            if (this.sailBoatNum === 0) {
+              document.getElementById("sailBoat_img").classList.add('sunk');
+            }
+
+            break;
+
+
+        }
         //disminuir el número de barcos disponibles
-        // this.ship.name + 'Num'--;
-        // document.getElementById(ship.name + "_num").textContent = ' ' + ship.name+ 'Num';
+        // document.getElementById(this.ship.name + '_num').textContent = this.ship + 'Num';
+
+        // document.getElementById(ship.name.toString() + "_num").textContent = ' ' + ship.name+ 'Num';
         // if (ship.name + 'Num'== 0) {
         //   document.getElementById(ship.name + '_img').classList.add("sunk");
         // }
@@ -100,19 +142,12 @@ Game.prototype = {
         document.querySelector('#ships_sunk strong').textContent = this.shipsSunk;
         this.remainingShips--;
         document.querySelector('#remaining_ships strong').textContent = this.remainingShips;
-        for (var j = 0; j < ship.length; j++) {
-          document.getElementById(ship.locations[j]).classList.add(ship.name + '_ship');
-          document.getElementById(ship.locations[j]).classList.remove('hit');
-        }
+
 
 
         if (this.remainingShips === 0) {
           this.endOfGame();
         }
-
-
-
-
 
         //pintar el barco en las 4 posiciones
 
@@ -191,9 +226,8 @@ Game.prototype = {
     var response = prompt("Do you want to play again? (Y/N)");
     if (response == "Y" || "y") {
       window.location.reload();
-    }
-    else {
-        return;
+    } else {
+      return;
     }
   }
 
