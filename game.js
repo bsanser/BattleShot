@@ -51,11 +51,12 @@ Game.prototype = {
         document.getElementById(ship.locations[j]).classList.remove('hit');
       }
       for (var row = 0; row < grid.length; row++) {
-        // empty row
         for (var col = 0; col < grid.length; col++) {
-          if (grid[row][col] === "null") {
+          if (grid[row][col] === null) {
             document.getElementById(row + "-" + col).classList.add('miss');
+            
           }
+
         }
       }
 
